@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
@@ -15,6 +17,7 @@ import java.awt.Point;
 public class CanvasPanel extends JPanel{
     Dimension size;
     Point p_s, p_e, p_d;
+    Set<Point> p_d_list;
     List<Command> command_list;
     Command tmp_command = null;
 
@@ -22,6 +25,7 @@ public class CanvasPanel extends JPanel{
         System.out.println("CanvaslPanel");
 
         command_list = new ArrayList<Command>();
+        p_d_list = new HashSet<Point>();
 
         setBackground(Color.WHITE);
         addMouseListener(new MyMouseListener(this));
@@ -57,17 +61,20 @@ public class CanvasPanel extends JPanel{
             System.out.println("mouseDragged : Point="+point);
             p_d = e.getPoint();
             //tmp_command = finalize();
-            tmp_command = new DrawCommand(new Line(p_s,p_d));
+            tmp_command = Command_Factory.makeCommand(p_s, p_d, p_d_list);
             context.repaint();
+
+            p_d_list.add(p_d);
 
         }
         public void mouseReleased(MouseEvent e) {
             Point point = e.getPoint();
             System.out.println("mouseReleased : Point="+point);
             p_e = e.getPoint();
-            
-            command_list.add(new DrawCommand(new Line(p_s,p_e)));
-            context.repaint();   
+
+            command_list.add(Command_Factory.makeCommand(p_s, p_e, p_d_list));
+            context.repaint();
+        
         }
     }
 

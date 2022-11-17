@@ -62,6 +62,13 @@ public class MainFrame extends JFrame{
         main_panel.add(common_panel);
 
 
+        // Tool 기본 값 셋팅
+        Tool.mode_command = mode_name.DrawCommand;
+        Tool.mode_shape = mode_name.Rect;
+        
+        Tool.line_thickness = 3;
+        Tool.line_color = Color.black;
+        Tool.fill_color = Color.lightGray;
 
         // 메인 프레임에 패널 부착
         add(main_panel);
