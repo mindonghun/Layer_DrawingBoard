@@ -4,13 +4,13 @@ import java.awt.Point;
 import java.util.Set;
 
 public class Shape_Factory {
-    public static Shape makeShape(Point p_s,Point p_e, Set<Point> p_d_list){
+    public static Shape makeShape(Point point_start,Point point_end, Set<Point> point_drag_list){
         
-        switch(Tool.mode_shape){
+        switch(Tool.getTool().mode_shape){
             case Line:
-                return new Line(p_s,p_e);
+                return new Line(point_start,point_end);
             case Rect:
-                return new Rect(p_s,p_e);
+                return new Rect(point_start,point_end);
             case Oval:
 
                 break;

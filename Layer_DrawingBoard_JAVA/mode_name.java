@@ -5,10 +5,12 @@ public enum mode_name {
     ImageProcessingCommand,
     PositionchangeCommand,
 
-
-
+    
     Line,
     Rect,
     Oval,
-    Pen
+    Pen,
+    Pencil,
+    Brush,
+    Eraser
 }

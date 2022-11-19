@@ -12,9 +12,9 @@ public abstract class Shape {
     public Color line_color;
     public Color fill_color;
 
-    Shape(Point p_s, Point p_e){
-        this.point_start = p_s;
-        this.point_end = p_e;
+    Shape(Point point_start, Point point_end){
+        this.point_start = point_start;
+        this.point_end = point_end;
     }
 
     public abstract void draw(Graphics g);

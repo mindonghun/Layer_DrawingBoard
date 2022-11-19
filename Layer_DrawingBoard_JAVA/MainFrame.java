@@ -33,9 +33,10 @@ public class MainFrame extends JFrame{
         main_panel = new JPanel();
         main_panel.setLayout(null);
 
-        tool_panel = new JPanel();
+        Rectangle tool_rect = panel_pos(17,0,3,12);
+        tool_panel = new ToolPanel();
         tool_panel.setBorder(new LineBorder(Color.lightGray,2));
-        tool_panel.setBounds(panel_pos(17,0,3,12));
+        tool_panel.setBounds(tool_rect);
         main_panel.add(tool_panel);
 
         canvas_panel = new CanvasPanel();
@@ -43,7 +44,6 @@ public class MainFrame extends JFrame{
         canvas_panel.setBounds(panel_pos(2,2,15,10));
         main_panel.add(canvas_panel);
         canvas_panel.size = canvas_panel.getSize();
-        System.out.println(canvas_panel.size);
 
 
         layer_panel = new JPanel();
@@ -61,15 +61,11 @@ public class MainFrame extends JFrame{
         common_panel.setBounds(panel_pos(0,1,18,1));
         main_panel.add(common_panel);
 
+        
 
         // Tool 기본 값 셋팅
-        Tool.mode_command = mode_name.DrawCommand;
-        Tool.mode_shape = mode_name.Rect;
+        Tool.toolInit();
         
-        Tool.line_thickness = 3;
-        Tool.line_color = Color.black;
-        Tool.fill_color = Color.lightGray;
-
         // 메인 프레임에 패널 부착
         add(main_panel);
         setVisible(true);

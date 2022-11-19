@@ -2,8 +2,6 @@ package Layer_DrawingBoard_JAVA;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -16,63 +14,63 @@ import java.awt.Point;
 
 public class CanvasPanel extends JPanel{
     Dimension size;
-    Point p_s, p_e, p_d;
-    Set<Point> p_d_list;
-    List<Command> command_list;
+    Point point_start, point_end, point_drag;
+    Set<Point> point_drag_list;
+    LayerManager layer_manager;
     Command tmp_command = null;
+    CanvasMouseListener mouse_listener;
+
 
     CanvasPanel(){
         System.out.println("CanvaslPanel");
 
-        command_list = new ArrayList<Command>();
-        p_d_list = new HashSet<Point>();
+        layer_manager = new LayerManager();
+        point_drag_list = new HashSet<Point>();
 
+        mouse_listener = new CanvasMouseListener(this);
+        
         setBackground(Color.WHITE);
-        addMouseListener(new MyMouseListener(this));
-        addMouseMotionListener(new MyMouseListener(this));
+        addMouseListener(mouse_listener);
+        addMouseMotionListener(mouse_listener);
     }
 
     @Override
     public void paint(Graphics g){
         super.paint(g);
 
-        for(int c=0; c<command_list.size(); c++){
-            command_list.get(c).execute(g);
-        }
+        layer_manager.execute(g);
+
         if(tmp_command != null)
             tmp_command.execute(g);
     }
 
-    class MyMouseListener extends MouseInputAdapter{
+    class CanvasMouseListener extends MouseInputAdapter{
 
         CanvasPanel context;
 
-        MyMouseListener(CanvasPanel context){
+        CanvasMouseListener(CanvasPanel context){
             this.context = context;
         }
 
         public void mousePressed(MouseEvent e){ // 눌린순간
-            Point point = e.getPoint();
-            System.out.println("mousePressed : Point="+point);
-            p_s = e.getPoint();
+            point_start = e.getPoint();
+            //System.out.println("mousePressed : Point="+point_start);
         }   
         public void mouseDragged(MouseEvent e){ // 드래그일시
-            Point point = e.getPoint();
-            System.out.println("mouseDragged : Point="+point);
-            p_d = e.getPoint();
-            //tmp_command = finalize();
-            tmp_command = Command_Factory.makeCommand(p_s, p_d, p_d_list);
+            point_drag = e.getPoint();
+            //System.out.println("mouseDragged : Point="+point_drag);
+
+            tmp_command = Command_Factory.makeCommand(point_start, point_drag, point_drag_list);
             context.repaint();
 
-            p_d_list.add(p_d);
+            point_drag_list.add(point_drag);
 
         }
-        public void mouseReleased(MouseEvent e) {
-            Point point = e.getPoint();
-            System.out.println("mouseReleased : Point="+point);
-            p_e = e.getPoint();
+        public void mouseReleased(MouseEvent e) { 
+            point_end = e.getPoint();
+            //System.out.println("mouseReleased : Point="+point_end);
 
-            command_list.add(Command_Factory.makeCommand(p_s, p_e, p_d_list));
+            layer_manager.getCurLayer().add(Command_Factory.makeCommand(point_start, point_end, point_drag_list));
             context.repaint();
         
         }
