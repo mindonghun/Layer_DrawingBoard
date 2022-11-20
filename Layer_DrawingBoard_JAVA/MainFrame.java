@@ -8,19 +8,23 @@ import javax.swing.border.LineBorder;
 public class MainFrame extends JFrame{
 
     JPanel main_panel;
-    JPanel tool_panel;
+    ToolPanel tool_panel;
 
     JPanel layer_panel;
     CanvasPanel canvas_panel;
 
     JPanel mode_panel;
-    JPanel common_panel;
+    CommonToolPanel common_tool_panel;
 
     static int grid_x = 1176/20;
     static int grid_y = 648/12;
 
     MainFrame(){
         System.out.println("MainFrame_start");
+
+        // Tool 기본 값 셋팅
+        Tool.toolInit();
+        
 
         // 타이틀 문구 설정
         setTitle("Layer_DrawingBoard");
@@ -38,11 +42,12 @@ public class MainFrame extends JFrame{
         tool_panel.setBounds(tool_rect);
         main_panel.add(tool_panel);
         
-        canvas_panel = new CanvasPanel();
-        canvas_panel.setBorder(new LineBorder(Color.lightGray,2));
-        canvas_panel.setBounds(panel_pos(2,2,15,10));
+        Rectangle canvas_rect = panel_pos(2,2,15,10);
+        canvas_panel = new CanvasPanel(canvas_rect.width,canvas_rect.height);
+        canvas_panel.setBounds(canvas_rect);
         main_panel.add(canvas_panel);
-        canvas_panel.size = canvas_panel.getSize();
+
+
 
 
         layer_panel = new JPanel();
@@ -55,15 +60,11 @@ public class MainFrame extends JFrame{
         mode_panel.setBounds(panel_pos(0,0,18,1));
         main_panel.add(mode_panel);
 
-        common_panel = new JPanel();
-        common_panel.setBorder(new LineBorder(Color.lightGray,2));
-        common_panel.setBounds(panel_pos(0,1,18,1));
-        main_panel.add(common_panel);
+        Rectangle common_tool_rect = panel_pos(0,1,18,1);
+        common_tool_panel = new CommonToolPanel(common_tool_rect.width,common_tool_rect.height, canvas_panel);
+        common_tool_panel.setBounds(common_tool_rect);
+        main_panel.add(common_tool_panel);
 
-        
-
-        // Tool 기본 값 셋팅
-        Tool.toolInit();
         
         // 메인 프레임에 패널 부착
         add(main_panel);

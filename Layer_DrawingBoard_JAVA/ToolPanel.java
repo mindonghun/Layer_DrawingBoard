@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
@@ -66,11 +65,13 @@ public class ToolPanel extends JPanel{
 
         initDrawModePanel();
         initPenToolPanel();
-
-        draw_tool_panel.add(draw_mode_panel);
-        draw_tool_panel.add(pen_tools_panel);
-        
         initShapeToolPanel();
+
+        
+        draw_tool_panel.add(draw_mode_panel);
+        draw_tool_panel.add(shape_tools_panel);
+        
+        
         
         add(draw_tool_panel);
     }

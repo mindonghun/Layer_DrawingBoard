@@ -12,8 +12,7 @@ import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Point;
 
-public class CanvasPanel extends JPanel{
-    Dimension size;
+public class CanvasPanel extends MyJPanel{
     Point point_start, point_end, point_drag;
     Set<Point> point_drag_list;
     LayerManager layer_manager;
@@ -21,14 +20,17 @@ public class CanvasPanel extends JPanel{
     CanvasMouseListener mouse_listener;
 
 
-    CanvasPanel(){
+    CanvasPanel(int w, int h){
+        super(w,h);
         System.out.println("CanvaslPanel");
-
-        layer_manager = new LayerManager();
+        
         point_drag_list = new HashSet<Point>();
 
         mouse_listener = new CanvasMouseListener(this);
         
+        LayerManager.LayerManagerInit(w, h);
+        layer_manager = LayerManager.getLayerManager();
+
         setBackground(Color.WHITE);
         addMouseListener(mouse_listener);
         addMouseMotionListener(mouse_listener);
