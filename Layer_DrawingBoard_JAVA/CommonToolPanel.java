@@ -38,17 +38,10 @@ public class CommonToolPanel extends MyJPanel{
             }
         });
 
-        test_btn = new JButton("test");
-        test_btn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                canvas_context.repaint();
-            }
-        });
 
         add(redo_btn);
         add(undo_btn);
-        add(test_btn);
+
 
     }
 }

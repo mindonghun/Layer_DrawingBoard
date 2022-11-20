@@ -21,19 +21,21 @@ public class Layer {
     public void execute(Graphics g){
         System.out.println("Layer - execute");
         for(int c=start_pointer; c < end_pointer; c++){
-            System.out.println(command_list.get(c));
+            System.out.println(c+" : "+command_list.get(c));
             command_list.get(c).execute(g);
         }
     }
 
     public void add(Command command){
-        end_pointer++;
+        
         if(redo_count ==0){
             command_list.add(command);
+            end_pointer++;
         }
         else{
             command_list.subList(end_pointer, command_list.size()).clear();
             command_list.add(command);
+            end_pointer++;
             redo_count = 0;
         }
         

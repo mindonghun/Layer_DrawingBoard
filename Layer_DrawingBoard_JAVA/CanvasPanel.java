@@ -42,8 +42,10 @@ public class CanvasPanel extends MyJPanel{
 
         layer_manager.execute(g);
 
-        if(tmp_command != null)
+        if(tmp_command != null){
             tmp_command.execute(g);
+            tmp_command = null;
+        }
     }
 
     class CanvasMouseListener extends MouseInputAdapter{
