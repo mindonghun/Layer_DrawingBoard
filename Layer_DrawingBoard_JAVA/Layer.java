@@ -42,16 +42,16 @@ public class Layer {
     }
 
     public void redo(){
-        if(end_pointer > 0){
-            end_pointer--;
-            redo_count++;
+        if(redo_count>0){
+            end_pointer++;
+            redo_count--;
         }
     }
 
     public void undo(){
-        if(redo_count>0){
-            end_pointer++;
-            redo_count--;
+        if(end_pointer > 0){
+            end_pointer--;
+            redo_count++;
         }
     }
 

@@ -39,9 +39,9 @@ public class CommonToolPanel extends MyJPanel{
         });
 
 
-        add(redo_btn);
+        
         add(undo_btn);
-
+        add(redo_btn);
 
     }
 }
