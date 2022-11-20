@@ -12,11 +12,12 @@ public class Shape_Factory {
             case Rect:
                 return new Rect(point_start,point_end);
             case Oval:
-
-                break;
+                return new Oval(point_start,point_end);
             case Pen:
-
-                break;
+            case Pencil:
+            case Brush:
+            case Eraser:
+                return new Line(point_start,point_end);
             default:
                 break;
         }

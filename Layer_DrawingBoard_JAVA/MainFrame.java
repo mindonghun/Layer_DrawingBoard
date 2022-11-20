@@ -26,7 +26,7 @@ public class MainFrame extends JFrame{
         setTitle("Layer_DrawingBoard");
         // (1960*3/5 , 1960*3/5)
         // 프레임 크기 설정 및 x버튼 종료 기능 지정
-        setSize(1176,648);
+        setSize(grid_x*21,grid_y*13);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 패널 객체화
@@ -34,11 +34,10 @@ public class MainFrame extends JFrame{
         main_panel.setLayout(null);
 
         Rectangle tool_rect = panel_pos(17,0,3,12);
-        tool_panel = new ToolPanel();
-        tool_panel.setBorder(new LineBorder(Color.lightGray,2));
+        tool_panel = new ToolPanel(tool_rect.width, tool_rect.height );
         tool_panel.setBounds(tool_rect);
         main_panel.add(tool_panel);
-
+        
         canvas_panel = new CanvasPanel();
         canvas_panel.setBorder(new LineBorder(Color.lightGray,2));
         canvas_panel.setBounds(panel_pos(2,2,15,10));
