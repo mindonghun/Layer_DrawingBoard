@@ -19,9 +19,9 @@ public class Layer {
     }
 
     public void execute(Graphics g){
-        System.out.println("Layer - execute");
+        //System.out.println("Layer - execute");
         for(int c=start_pointer; c < end_pointer; c++){
-            System.out.println(c+" : "+command_list.get(c));
+            //System.out.println(c+" : "+command_list.get(c));
             command_list.get(c).execute(g);
         }
     }

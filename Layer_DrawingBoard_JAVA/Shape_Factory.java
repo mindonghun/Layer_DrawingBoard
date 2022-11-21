@@ -17,7 +17,7 @@ public class Shape_Factory {
             case Pencil:
             case Brush:
             case Eraser:
-                return new Line(point_start,point_end);
+                return new Pen(point_start,point_end,point_drag_list);
             default:
                 break;
         }
