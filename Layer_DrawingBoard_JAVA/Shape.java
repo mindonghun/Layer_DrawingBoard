@@ -15,6 +15,9 @@ public abstract class Shape {
     Shape(Point point_start, Point point_end){
         this.point_start = point_start;
         this.point_end = point_end;
+        this.line_color = Tool.getTool().line_color;
+        this.line_thickness = Tool.getTool().line_thickness;
+        this.fill_color = Tool.getTool().fill_color;
     }
 
     public abstract void draw(Graphics g);

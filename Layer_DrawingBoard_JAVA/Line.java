@@ -9,8 +9,6 @@ public class Line extends Shape {
 
     Line(Point point_start, Point point_end) {
         super(point_start, point_end);
-        super.line_color = Tool.getTool().line_color;
-        super.line_thickness = Tool.getTool().line_thickness;
     }
 
     @Override

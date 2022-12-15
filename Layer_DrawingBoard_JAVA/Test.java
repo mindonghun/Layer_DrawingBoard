@@ -5,9 +5,9 @@ import java.awt.Point;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 
-public class Oval extends Shape {
+public class Test extends Shape {
 
-    Oval(Point point_start, Point point_end) {
+    Test(Point point_start, Point point_end) {
         super(point_start, point_end);
     }
 
@@ -33,10 +33,15 @@ public class Oval extends Shape {
             h = super.point_start.y - super.point_end.y;
         }
 
-        g.setColor(super.fill_color);
-        g.fillOval(x, y, w, h);
-        g.setColor(super.line_color);
-        g.drawOval(x, y, w, h);
+        // g.setColor(super.fill_color);
+        // g.fillRect(x, y, w, h);
+        // g.setColor(super.line_color);
+        // g.drawRect(x, y, w, h);
+        
+        g.copyArea(x,y,w,h, 100,100);
+        g.clearRect(x, y, w, h);
+
     }
+
     
 }

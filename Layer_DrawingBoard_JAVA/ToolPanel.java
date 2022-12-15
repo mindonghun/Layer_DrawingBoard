@@ -318,6 +318,16 @@ public class ToolPanel extends JPanel{
         });
         shape_list.add(shape_oval);
 
+        JButton shape_test = new JButton(new ImageIcon("./Layer_DrawingBoard_JAVA/Button_Image/test_img.png"));
+        shape_test.setPreferredSize(new Dimension(30,30));
+        shape_test.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tool.getTool().mode_shape = mode_name.Test;
+            }
+        });
+        shape_list.add(shape_test);
+
     }
 
 }

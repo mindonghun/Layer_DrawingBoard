@@ -12,5 +12,9 @@ public enum mode_name {
     Pen,
     Pencil,
     Brush,
-    Eraser
+    Eraser,
+
+
+
+    Test
 }

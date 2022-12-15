@@ -10,8 +10,6 @@ public class Pen extends Shape {
 
     Pen(Point point_start, Point point_end, Set<Point> point_drag_list) {
         super(point_start, point_end);
-        super.line_color = Tool.getTool().line_color;
-        super.line_thickness = Tool.getTool().line_thickness;
         this.point_drag_list = point_drag_list;
 
     }

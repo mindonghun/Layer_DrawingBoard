@@ -18,6 +18,8 @@ public class Shape_Factory {
             case Pencil:
             case Brush:
             case Eraser:
+            case Test:
+                return new Test(point_start, point_end);
             default:
                 break;
         }

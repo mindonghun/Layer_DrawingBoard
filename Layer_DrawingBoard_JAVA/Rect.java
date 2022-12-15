@@ -9,9 +9,6 @@ public class Rect extends Shape {
 
     Rect(Point point_start, Point point_end) {
         super(point_start, point_end);
-        super.line_color = Tool.getTool().line_color;
-        super.line_thickness = Tool.getTool().line_thickness;
-        super.fill_color = Tool.getTool().fill_color;
     }
 
     @Override
