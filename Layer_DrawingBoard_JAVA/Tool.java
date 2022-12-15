@@ -20,7 +20,7 @@ public class Tool {
         mode_command = mode_name.DrawCommand;
         mode_shape = mode_name.Rect;
 
-        line_thickness = 3;
+        line_thickness = 1;
         line_color = Color.black;
         fill_color = Color.lightGray;
     }

@@ -3,6 +3,7 @@ package Layer_DrawingBoard_JAVA;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -34,7 +35,7 @@ public class ToolPanel extends JPanel{
 
     MyJPanel line_thickness_panel;
     JLabel line_thickness_label;
-    JTextField line_thickness_textfield;
+    JComboBox<Integer> line_thickness_JComboBox;
 
     MyJPanel line_color_panel;
     JLabel line_color_label;
@@ -54,6 +55,9 @@ public class ToolPanel extends JPanel{
     JLabel fill_color_label;
     JButton fill_color_btn;
 
+    MyJPanel shape_line_thickness_panel;
+    JLabel shape_line_thickness_label;
+    JComboBox<Integer> shape_line_thickness_JComboBox;
 
     ToolPanel(int w, int h){
 
@@ -123,8 +127,18 @@ public class ToolPanel extends JPanel{
         line_thickness_panel = new MyJPanel(width,height/12);
         line_thickness_label = new JLabel("선 굵기");
         line_thickness_panel.add(line_thickness_label);
-        line_thickness_textfield = new JTextField();
-        line_thickness_panel.add(line_thickness_textfield);
+        Integer[] line_thickness_choose = {1,2,3,4,5,6,7};
+        line_thickness_JComboBox = new JComboBox<>(line_thickness_choose);
+        line_thickness_JComboBox.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println(e);
+                Tool.getTool().line_thickness = line_thickness_JComboBox.getItemAt(line_thickness_JComboBox.getSelectedIndex());
+            }
+
+        });
+        line_thickness_panel.add(line_thickness_JComboBox);
         pen_tools_panel.add(line_thickness_panel);
 
 
@@ -166,6 +180,22 @@ public class ToolPanel extends JPanel{
         }
         shape_tools_panel.add(shapes_panel);
 
+        shape_line_thickness_panel = new MyJPanel(width,height/12);
+        shape_line_thickness_label = new JLabel("선 굵기");
+        shape_line_thickness_panel.add(shape_line_thickness_label);
+        Integer[] shape_line_thickness_choose = {1,2,3,4,5,6,7};
+        shape_line_thickness_JComboBox = new JComboBox<>(shape_line_thickness_choose);
+        shape_line_thickness_JComboBox.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println(e);
+                Tool.getTool().line_thickness = shape_line_thickness_JComboBox.getItemAt(shape_line_thickness_JComboBox.getSelectedIndex());
+            }
+
+        });
+        shape_line_thickness_panel.add(shape_line_thickness_JComboBox);
+        shape_tools_panel.add(shape_line_thickness_panel);
 
         shape_line_color_panel = new MyJPanel(width,height/12);
         shape_line_color_label = new JLabel("선 색");
