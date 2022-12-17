@@ -66,14 +66,14 @@ public class CanvasPanel extends MyJPanel{
             
             point_drag_list.add(point_drag);
 
-            tmp_command = Command_Factory.makeCommand(point_start, point_drag, point_drag_list);
+            tmp_command = Command_Factory.makeCommand(point_start, point_drag, point_drag_list, 1);
             context.repaint();
 
         }
         public void mouseReleased(MouseEvent e) { 
             point_end = e.getPoint();
             //System.out.println("mouseReleased : Point="+point_end);
-            layer_manager.getCurLayer().add(Command_Factory.makeCommand(point_start, point_end, new HashSet<Point>(point_drag_list)));
+            layer_manager.getCurLayer().add(Command_Factory.makeCommand(point_start, point_end, new HashSet<Point>(point_drag_list), 2));
             point_drag_list.clear();
             context.repaint();
         

@@ -39,6 +39,7 @@ public class Tool {
 
     public void set_mode_shape(mode_name mode_name){
         this.mode_shape = mode_name;
+        PositionchangeCommand_Builder.finish_makePositionchangeCommand();
     }
 
 }

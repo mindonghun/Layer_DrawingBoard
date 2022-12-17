@@ -330,7 +330,7 @@ public class ToolPanel extends JPanel{
         shape_test.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_command(mode_name.PositionchangeCommand);
                 Tool.getTool().set_mode_shape(mode_name.Test);
             }
         });
