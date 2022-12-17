@@ -21,8 +21,8 @@ public class LayerPanel extends JPanel {
 
     LayerManager layer_manager;
 
-    int curSelectedBtnIconNum = -1;
-    int curSelectedBtnPriorityNum = -1;
+    int curSelectedBtnIconNum = 0;
+    int curSelectedBtnPriorityNum = 0;
 
     LayerPanel(int w, int h, CanvasPanel context){
         layer_manager = LayerManager.getLayerManager();
