@@ -26,17 +26,24 @@ public class Layer {
         }
     }
 
+    public void delete(){
+        command_list.remove(command_list.size());
+    }
+
     public void add(Command command){
         
-        if(redo_count ==0){
-            command_list.add(command);
-            end_pointer++;
-        }
-        else{
-            command_list.subList(end_pointer, command_list.size()).clear();
-            command_list.add(command);
-            end_pointer++;
-            redo_count = 0;
+        if(command != null)
+        {
+            if(redo_count ==0){
+                command_list.add(command);
+                end_pointer++;
+            }
+            else{
+                command_list.subList(end_pointer, command_list.size()).clear();
+                command_list.add(command);
+                end_pointer++;
+                redo_count = 0;
+            }
         }
         
     }
