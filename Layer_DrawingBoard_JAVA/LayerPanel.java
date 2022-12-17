@@ -168,6 +168,8 @@ public class LayerPanel extends JPanel {
             layer_btn_list.set(pos - upOrDown, layer_btn_list.get(pos));
             layer_btn_list.set(pos, tmp_layer);
 
+            curSelectedBtnPriorityNum -= upOrDown;
+
             layer_manager.switchLayer(pos, upOrDown);
             canvas_context.repaint();
         }
