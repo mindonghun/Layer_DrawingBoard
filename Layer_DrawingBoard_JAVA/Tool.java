@@ -24,9 +24,7 @@ public class Tool {
     Mat result;
 
     Tool(){
-        // mode_command = mode_name.DrawCommand;
-        mode_command = mode_name.ImageProcessingCommand;
-        mode_imageP = mode_name.imageP_Blur;
+        mode_command = mode_name.DrawCommand;
         mode_shape = mode_name.Rect;
 
         line_thickness = 1;
