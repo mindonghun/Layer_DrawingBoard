@@ -251,7 +251,8 @@ public class ToolPanel extends JPanel{
         pen_shape_pen.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Pen;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Pen);
             }
         });
         pen_shape_list.add(pen_shape_pen);
@@ -260,7 +261,8 @@ public class ToolPanel extends JPanel{
         pen_shape_pencil.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Pencil;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Pencil);
             }
         });
         pen_shape_list.add(pen_shape_pencil);
@@ -269,7 +271,8 @@ public class ToolPanel extends JPanel{
         pen_shape_brush.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Pencil;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Pencil);
             }
         });
         pen_shape_list.add(pen_shape_brush);
@@ -278,7 +281,8 @@ public class ToolPanel extends JPanel{
         pen_shape_eraser.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Eraser;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Eraser);
             }
         });
         pen_shape_list.add(pen_shape_eraser);
@@ -293,7 +297,8 @@ public class ToolPanel extends JPanel{
         shape_line.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Line;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Line);
             }
         });
         shape_list.add(shape_line);
@@ -303,7 +308,8 @@ public class ToolPanel extends JPanel{
         shape_rect.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Rect;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Rect);
             }
         });
         shape_list.add(shape_rect);
@@ -313,7 +319,8 @@ public class ToolPanel extends JPanel{
         shape_oval.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Oval;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Oval);
             }
         });
         shape_list.add(shape_oval);
@@ -323,7 +330,8 @@ public class ToolPanel extends JPanel{
         shape_test.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tool.getTool().mode_shape = mode_name.Test;
+                Tool.getTool().set_mode_command(mode_name.DrawCommand);
+                Tool.getTool().set_mode_shape(mode_name.Test);
             }
         });
         shape_list.add(shape_test);

@@ -33,4 +33,12 @@ public class Tool {
         return s_instance;
     }
 
+    public void set_mode_command(mode_name mode_name){
+        this.mode_command = mode_name;
+    }
+
+    public void set_mode_shape(mode_name mode_name){
+        this.mode_shape = mode_name;
+    }
+
 }
