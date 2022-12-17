@@ -32,8 +32,10 @@ public class LayerManager {
     }
 
     public void execute(Graphics g){
-        for(int i=0; i<layer_list.size(); i++){
-            layer_list.get(i).execute(g);
+        for(int i=layer_list.size() - 1; i >= 0; i--){
+            if(layer_list.get(i).getVisibility()) {
+                layer_list.get(i).execute(g);
+            }
         }
     }
 
@@ -46,10 +48,23 @@ public class LayerManager {
         cur_layer = layer_list.size() - 1;
     }
 
-    public void switchLayer(int pos1, int pos2){
-        Layer tmp_layer = layer_list.get(pos1);
-        layer_list.set(pos2 , layer_list.get(pos1));
-        layer_list.set(pos1 , tmp_layer);
+    public void switchLayer(int pos, int upOrDown){
+        if((upOrDown == 1 && pos > 0) || (upOrDown == -1 && pos < layer_list.size() - 1)) {
+            Layer tmp_layer = layer_list.get(pos - upOrDown);
+            layer_list.set(pos - upOrDown, layer_list.get(pos));
+            layer_list.set(pos, tmp_layer);
+        }
+    }
+
+    public void removeLayer(){
+        layer_list.remove(cur_layer);
+        cur_layer = layer_list.size() - 1;
+        System.out.println("cur_layer_list_size : " + layer_list.size());
+    }
+
+    public void setCurLayer(int l){
+        cur_layer = l;
+        System.out.println(cur_layer);
     }
     
 
