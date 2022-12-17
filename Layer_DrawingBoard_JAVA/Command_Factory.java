@@ -10,9 +10,10 @@ public class Command_Factory {
         switch(Tool.getTool().mode_command){
             case DrawCommand:
                 return new DrawCommand(Shape_Factory.makeShape(p_s,p_e,p_d_list));
-            case ImageProcessingCommand:
 
-                break;
+            case ImageProcessingCommand:
+                return new ImagePCommand(new ImageMat());
+
             case PositionchangeCommand:
                 return PositionchangeCommand_Builder.makePositionchangeCommand(p_s, p_e, p_d_list, status);
             default:

@@ -16,5 +16,13 @@ public enum mode_name {
 
 
 
-    Test
+    Test,
+
+    // Image Processing mode name
+    imageP_Blur,
+    imageP_CannyEdge,
+    imageP_Grayscale,
+    imageP_Colorinverse,
+    imageP_Affine
+
 }
