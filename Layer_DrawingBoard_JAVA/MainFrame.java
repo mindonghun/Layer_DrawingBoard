@@ -50,7 +50,8 @@ public class MainFrame extends JFrame{
 
 
 
-        layer_panel = new JPanel();
+        Rectangle layer_rect = panel_pos(0,-1,2,25);
+        layer_panel = new LayerPanel(layer_rect.width, layer_rect.height, canvas_panel);
         layer_panel.setBorder(new LineBorder(Color.lightGray,2));
         layer_panel.setBounds(panel_pos(0,2,2,10));
         main_panel.add(layer_panel);

@@ -10,6 +10,7 @@ public class Layer {
     List<Command> command_list;
     int start_pointer, end_pointer, redo_count;
 
+    boolean visibility;
 
     Layer(){
         command_list = new ArrayList<Command>();
@@ -60,6 +61,14 @@ public class Layer {
             end_pointer--;
             redo_count++;
         }
+    }
+
+    public void toggleVisibility(){
+        visibility = !visibility;
+    }
+
+    public boolean getVisibility(){
+        return visibility;
     }
 
 }
