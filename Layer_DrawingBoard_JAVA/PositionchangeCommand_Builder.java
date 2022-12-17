@@ -11,9 +11,9 @@ public class PositionchangeCommand_Builder {
     // mouse_status 0:click , 1:drag , 2:released
     public static PositionchangeCommand makePositionchangeCommand(Point point_start,Point point_end, Set<Point> point_drag_list, int mouse_status){
         if(mouse_status == 1){
-            if(tmp_position==null)
+            if(tmp_position==null) 
                 return new PositionchangeCommand(point_start, point_end);
-                
+
         }else if(mouse_status==2){
             if(tmp_position == null){
                 tmp_position = new PositionchangeCommand(point_start, point_end);

@@ -17,6 +17,7 @@ public class Layer {
         start_pointer = 0;
         end_pointer = 0;
         redo_count = 0;
+        visibility = true;
     }
 
     public void execute(Graphics g){
