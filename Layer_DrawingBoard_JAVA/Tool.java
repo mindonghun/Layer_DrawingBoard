@@ -6,6 +6,7 @@ import org.opencv.imgproc.Imgproc;
 
 import java.awt.*;
 
+import static org.opencv.core.CvType.CV_8UC1;
 import static org.opencv.core.CvType.CV_8UC3;
 
 public class Tool {
@@ -82,9 +83,11 @@ public class Tool {
     public Mat imageP_Colorinverse(Mat imgMat) {
         for(int i=0;i<imgMat.rows();i++){
             for (int j=0;j<imgMat.cols();j++){
-                for(int c=0;c<imgMat.channels();c++){
-                    imgMat.get(i,j)[c]=255-imgMat.get(i,j)[c];
-                }
+                double[] buff = imgMat.get(i,j);
+                buff[0]=255-buff[0];
+                buff[1]=255-buff[1];
+                buff[2]=255-buff[2];
+                imgMat.put(i,j,buff);
             }
         }
         return imgMat;

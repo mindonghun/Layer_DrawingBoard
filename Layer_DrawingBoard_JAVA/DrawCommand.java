@@ -14,5 +14,4 @@ public class DrawCommand implements Command{
     public void execute(Graphics g) {
          m_draw.draw(g);
     }
-                                         
 }

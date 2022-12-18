@@ -135,7 +135,7 @@ public class ImageMat {
         imageProcessing();
         if(g2d == null)
             g2d = m_tmpBuffered.createGraphics();
-        g = (Graphics) g2d;
+        // g = (Graphics) g2d;
         g.drawImage(m_tmpBuffered, 0, 0, null);
 
         // graphics 객체 정리
