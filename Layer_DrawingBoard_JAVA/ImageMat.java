@@ -40,10 +40,9 @@ public class ImageMat {
         // BufferedImage 채워넣기
         Layer curLayer = LayerManager.getLayerManager().getCurLayer();
 
-        // ImageProcessing 이전까지만 불러오기
-        curLayer.end_pointer--;
+        // curLayer.end_pointer--;
         curLayer.execute(g2d);
-        curLayer.end_pointer++;
+        // curLayer.end_pointer++;
 
         return img;
     }
@@ -136,7 +135,8 @@ public class ImageMat {
         imageProcessing();
         if(g2d == null)
             g2d = m_tmpBuffered.createGraphics();
-        g2d.drawImage(m_tmpBuffered, 0, 0, null);
+        g = (Graphics) g2d;
+        g.drawImage(m_tmpBuffered, 0, 0, null);
 
         // graphics 객체 정리
         g2d.dispose();

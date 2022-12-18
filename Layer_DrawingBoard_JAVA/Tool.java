@@ -1,8 +1,12 @@
 package Layer_DrawingBoard_JAVA;
 
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
 
-import java.awt.Color;
+import java.awt.*;
+
+import static org.opencv.core.CvType.CV_8UC3;
 
 public class Tool {
     
@@ -24,7 +28,9 @@ public class Tool {
     Mat result;
 
     Tool(){
-        mode_command = mode_name.DrawCommand;
+        // mode_command = mode_name.DrawCommand;
+        mode_command = mode_name.ImageProcessingCommand;
+        mode_imageP = mode_name.imageP_Blur;
         mode_shape = mode_name.Rect;
 
         line_thickness = 1;
@@ -51,23 +57,47 @@ public class Tool {
 
     // Image Processing 함수 정의
     public Mat imageP_Blur(Mat imgMat) {
-        return null;
+        Mat dst = new Mat(imgMat.rows(), imgMat.cols(), CV_8UC3);
+        Imgproc.GaussianBlur(imgMat, dst, new Size(3, 3),0,0);
+        return dst;
     }
 
     public Mat imageP_CannyEdge(Mat imgMat) {
-        return null;
+        Imgproc.Canny(imgMat,imgMat,40,100);
+        return imgMat;
     }
 
     public Mat imageP_Grayscale(Mat imgMat) {
-        return null;
+        System.out.println(imgMat);
+        Imgproc.cvtColor(imgMat,imgMat,Imgproc.COLOR_BGR2GRAY);
+        System.out.println(imgMat);
+        return imgMat;
     }
 
     public Mat imageP_Colorinverse(Mat imgMat) {
-        return null;
+        for(int i=0;i<imgMat.rows();i++){
+            for (int j=0;j<imgMat.cols();j++){
+                for(int c=0;c<imgMat.channels();c++){
+                    imgMat.get(i,j)[c]=255-imgMat.get(i,j)[c];
+                }
+            }
+        }
+        return imgMat;
     }
 
     public Mat imageP_Affine(Mat imgMat) {
-        return null;
+        Point[] srcTri = new Point[3];
+        srcTri[0] = new Point( 0, 0 );
+        srcTri[1] = new Point( imgMat.cols() - 1, 0 );
+        srcTri[2] = new Point( 0, imgMat.rows() - 1 );
+        Point[] dstTri = new Point[3];
+        dstTri[0] = new Point( 0, (int) (imgMat.rows()*0.33));
+        dstTri[1] = new Point((int) (imgMat.cols()*0.85), (int) (imgMat.rows()*0.25));
+        dstTri[2] = new Point((int) (imgMat.cols()*0.15), (int) (imgMat.rows()*0.7));
+        //Mat warpMat = Imgproc.getAffineTransform(srcTri[0], dstTri);
+        Mat warpDst = Mat.zeros( imgMat.rows(), imgMat.cols(), imgMat.type() );
+//        Imgproc.warpAffine( imgMat, warpDst, warpMat, warpDst.size() );
+        return warpDst;
     }
 
 }
