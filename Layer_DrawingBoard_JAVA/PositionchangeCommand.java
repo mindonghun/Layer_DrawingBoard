@@ -50,20 +50,48 @@ public class PositionchangeCommand implements Command{
         if( _y<0 || _y>h){
             return false;
         }
-        status = 1;
         return true;
     }
 
     public void move_position(Point point_start, Point point_end){
         dx += point_end.x - point_start.x;
         dy += point_end.y - point_start.y;
-        
+        status = 1;
     }
 
     @Override
     public void execute(Graphics g) {
+
         g.copyArea(x,y,w,h, dx,dy);
-        g.clearRect(x, y, w, h);
+        if(dx>0){
+            if(dx>w){
+                g.clearRect(x,y,w,h);
+            }else{
+                g.clearRect(x,y,dx,h);
+            }
+        }
+        if(dx<0){
+            if(-dx>w){
+                g.clearRect(x,y,w,h);
+            }else{
+                g.clearRect(x+w+dx,y,-dx,h);
+            }
+        }
+        if(dy>0){
+            if(dy>h){
+                g.clearRect(x,y,w,h);
+            }else{
+                g.clearRect(x,y,w,dy);
+            }
+        }
+        if(dy<0){
+            if(-dy>h){
+                g.clearRect(x,y,w,h);
+            }else{
+                g.clearRect(x,y+h+dy,w,-dy);
+            }
+        }
+
 
         if(status != 2){
             Graphics2D g2d = (Graphics2D) g;

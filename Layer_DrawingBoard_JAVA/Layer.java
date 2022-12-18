@@ -29,7 +29,8 @@ public class Layer {
     }
 
     public void delete(){
-        command_list.remove(command_list.size());
+        command_list.remove(command_list.size()-1);
+        end_pointer--;
     }
 
     public void add(Command command){

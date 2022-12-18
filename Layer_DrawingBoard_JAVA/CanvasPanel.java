@@ -58,7 +58,8 @@ public class CanvasPanel extends MyJPanel{
 
         public void mousePressed(MouseEvent e){ // 눌린순간
             point_start = e.getPoint();
-            //System.out.println("mousePressed : Point="+point_start);
+            point_drag_list.add(point_start);
+            System.out.println("mousePressed : Point="+point_start);
         }   
         public void mouseDragged(MouseEvent e){ // 드래그일시
             point_drag = e.getPoint();
@@ -72,7 +73,8 @@ public class CanvasPanel extends MyJPanel{
         }
         public void mouseReleased(MouseEvent e) { 
             point_end = e.getPoint();
-            //System.out.println("mouseReleased : Point="+point_end);
+            point_drag_list.add(point_end);
+            System.out.println("mouseReleased : Point="+point_end);
             layer_manager.getCurLayer().add(Command_Factory.makeCommand(point_start, point_end, new HashSet<Point>(point_drag_list), 2));
             point_drag_list.clear();
             context.repaint();
