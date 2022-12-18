@@ -31,7 +31,7 @@ public class ImageProcessingToolPanel extends MyJPanel{
                 Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
                 Tool.getTool().set_mode_imageP(mode_name.imageP_Blur);
                 LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
-
+                canvas_context.repaint();
             }
         });
 
@@ -42,6 +42,7 @@ public class ImageProcessingToolPanel extends MyJPanel{
                 Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
                 Tool.getTool().set_mode_imageP(mode_name.imageP_CannyEdge);
                 LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
+                canvas_context.repaint();
             }
         });
 
@@ -52,6 +53,7 @@ public class ImageProcessingToolPanel extends MyJPanel{
                 Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
                 Tool.getTool().set_mode_imageP(mode_name.imageP_Grayscale);
                 LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
+                canvas_context.repaint();
             }
         });
 
@@ -62,6 +64,7 @@ public class ImageProcessingToolPanel extends MyJPanel{
                 Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
                 Tool.getTool().set_mode_imageP(mode_name.imageP_Colorinverse);
                 LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
+                canvas_context.repaint();
             }
         });
 
