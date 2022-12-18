@@ -13,8 +13,8 @@ public class MainFrame extends JFrame{
     JPanel layer_panel;
     CanvasPanel canvas_panel;
 
-    JPanel mode_panel;
     CommonToolPanel common_tool_panel;
+    ImageProcessingToolPanel imageProcessing_tool_panel;
 
     static int grid_x = 1176/20;
     static int grid_y = 648/12;
@@ -56,17 +56,17 @@ public class MainFrame extends JFrame{
         layer_panel.setBounds(panel_pos(0,2,2,10));
         main_panel.add(layer_panel);
 
-        mode_panel = new JPanel();
-        mode_panel.setBorder(new LineBorder(Color.lightGray,2));
-        mode_panel.setBounds(panel_pos(0,0,18,1));
-        main_panel.add(mode_panel);
-
         Rectangle common_tool_rect = panel_pos(0,1,18,1);
         common_tool_panel = new CommonToolPanel(common_tool_rect.width,common_tool_rect.height, canvas_panel);
         common_tool_panel.setBounds(common_tool_rect);
         main_panel.add(common_tool_panel);
 
-        
+        Rectangle imageProcessing_tool_rect = panel_pos(0,0,18,1);
+        imageProcessing_tool_panel = new ImageProcessingToolPanel(imageProcessing_tool_rect.width,imageProcessing_tool_rect.height, canvas_panel);
+        imageProcessing_tool_panel.setBounds(imageProcessing_tool_rect);
+        main_panel.add(imageProcessing_tool_panel);
+
+
         // 메인 프레임에 패널 부착
         add(main_panel);
         setVisible(true);
