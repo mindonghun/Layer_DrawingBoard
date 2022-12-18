@@ -334,7 +334,7 @@ public class ToolPanel extends JPanel{
                 Tool.getTool().set_mode_shape(mode_name.Test);
             }
         });
-        shape_list.add(shape_test);
+        //shape_list.add(shape_test);
 
     }
 

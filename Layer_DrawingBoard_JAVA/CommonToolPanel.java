@@ -13,7 +13,7 @@ public class CommonToolPanel extends MyJPanel{
 
     JButton redo_btn;
     JButton undo_btn;
-    JButton test_btn;
+    JButton position_change_btn;
 
     CommonToolPanel(int w, int h, CanvasPanel context){
         super(w,h);
@@ -38,10 +38,19 @@ public class CommonToolPanel extends MyJPanel{
             }
         });
 
+        position_change_btn = new JButton("영역 선택");
+        position_change_btn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Tool.getTool().set_mode_command(mode_name.PositionchangeCommand);
+                Tool.getTool().set_mode_shape(mode_name.Test);
+            }
+        });
 
         
         add(undo_btn);
         add(redo_btn);
+        add(position_change_btn);
 
     }
 }
