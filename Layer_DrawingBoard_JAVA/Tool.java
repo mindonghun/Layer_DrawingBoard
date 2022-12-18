@@ -29,8 +29,7 @@ public class Tool {
 
     Tool(){
         // mode_command = mode_name.DrawCommand;
-        mode_command = mode_name.ImageProcessingCommand;
-        mode_imageP = mode_name.imageP_Blur;
+        mode_command = mode_name.DrawCommand;
         mode_shape = mode_name.Rect;
 
         line_thickness = 1;
@@ -55,6 +54,10 @@ public class Tool {
         PositionchangeCommand_Builder.finish_makePositionchangeCommand();
     }
 
+    public void set_mode_imageP(mode_name mode_name) {
+        this.mode_imageP = mode_name;
+    }
+
     // Image Processing 함수 정의
     public Mat imageP_Blur(Mat imgMat) {
         Mat dst = new Mat(imgMat.rows(), imgMat.cols(), CV_8UC3);
@@ -63,15 +66,17 @@ public class Tool {
     }
 
     public Mat imageP_CannyEdge(Mat imgMat) {
-        Imgproc.Canny(imgMat,imgMat,40,100);
-        return imgMat;
+        Mat dst = new Mat(imgMat.rows(), imgMat.cols(), CV_8UC3);
+        Imgproc.Canny(imgMat, dst,40,100);
+        return dst;
     }
 
     public Mat imageP_Grayscale(Mat imgMat) {
+        Mat dst = new Mat(imgMat.rows(), imgMat.cols(), CV_8UC3);
         System.out.println(imgMat);
-        Imgproc.cvtColor(imgMat,imgMat,Imgproc.COLOR_BGR2GRAY);
+        Imgproc.cvtColor(imgMat,dst,Imgproc.COLOR_BGR2GRAY);
         System.out.println(imgMat);
-        return imgMat;
+        return dst;
     }
 
     public Mat imageP_Colorinverse(Mat imgMat) {

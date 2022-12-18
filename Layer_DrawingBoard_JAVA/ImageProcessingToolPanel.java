@@ -1,8 +1,10 @@
 package Layer_DrawingBoard_JAVA;
 
 import javax.swing.JButton;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 
 
 public class ImageProcessingToolPanel extends MyJPanel{
@@ -26,8 +28,9 @@ public class ImageProcessingToolPanel extends MyJPanel{
         blur_btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
+                Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
+                Tool.getTool().set_mode_imageP(mode_name.imageP_Blur);
+                LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
 
             }
         });
@@ -36,9 +39,9 @@ public class ImageProcessingToolPanel extends MyJPanel{
         edge_detect_btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
+                Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
+                Tool.getTool().set_mode_imageP(mode_name.imageP_CannyEdge);
+                LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
             }
         });
 
@@ -46,9 +49,9 @@ public class ImageProcessingToolPanel extends MyJPanel{
         gray_scale_btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
+                Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
+                Tool.getTool().set_mode_imageP(mode_name.imageP_Grayscale);
+                LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
             }
         });
 
@@ -56,9 +59,9 @@ public class ImageProcessingToolPanel extends MyJPanel{
         color_reversal_btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
+                Tool.getTool().set_mode_command(mode_name.ImageProcessingCommand);
+                Tool.getTool().set_mode_imageP(mode_name.imageP_Colorinverse);
+                LayerManager.getLayerManager().getCurLayer().add(Command_Factory.makeCommand(null, null, null, 0));
             }
         });
 
